@@ -30,7 +30,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    @Operation(summary = "Salva Usuários", description = "Cria um movo usuário")
+    @Operation(summary = "Salva Usuários", description = "Cria um novo usuário")
     @ApiResponse(responseCode = "200", description = "Usuário salvo com sucesso")
     @ApiResponse(responseCode = "400", description = "Usuário já cadastrado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
