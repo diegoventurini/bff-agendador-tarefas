@@ -1,7 +1,6 @@
 package com.venturini.bff_agendador_tarefas.business.dto.in;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.venturini.bff_agendador_tarefas.business.enums.StatusNotificacaoEnum;
 import lombok.*;
 
 import java.time.LocalDateTime;
