@@ -7,7 +7,9 @@ import com.venturini.bff_agendador_tarefas.business.dto.in.UsuarioDTORequest;
 import com.venturini.bff_agendador_tarefas.business.dto.out.EnderecoDTOResponse;
 import com.venturini.bff_agendador_tarefas.business.dto.out.TelefoneDTOResponse;
 import com.venturini.bff_agendador_tarefas.business.dto.out.UsuarioDTOResponse;
+import com.venturini.bff_agendador_tarefas.business.dto.out.ViaCepDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 // nome da API          // url da porta
@@ -51,6 +53,9 @@ public interface UsuarioClient {
     @PostMapping("/telefone")
     TelefoneDTOResponse cadastrarTelefone(@RequestBody TelefoneDTORequest telefoneDTO,
                                           @RequestHeader("Authorization") String  token);
+
+    @GetMapping("/endereco/{cep}")
+    ViaCepDTOResponse buscarDadosCep(@PathVariable("cep") String cep);
 }
 
 

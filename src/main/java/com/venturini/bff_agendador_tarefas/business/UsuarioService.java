@@ -7,6 +7,7 @@ import com.venturini.bff_agendador_tarefas.business.dto.in.UsuarioDTORequest;
 import com.venturini.bff_agendador_tarefas.business.dto.out.EnderecoDTOResponse;
 import com.venturini.bff_agendador_tarefas.business.dto.out.TelefoneDTOResponse;
 import com.venturini.bff_agendador_tarefas.business.dto.out.UsuarioDTOResponse;
+import com.venturini.bff_agendador_tarefas.business.dto.out.ViaCepDTOResponse;
 import com.venturini.bff_agendador_tarefas.infrastructure.client.UsuarioClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,4 +55,9 @@ public class UsuarioService {
     public TelefoneDTOResponse cadastraTelefone(String token, TelefoneDTORequest telefoneDTO) {
         return client.cadastrarTelefone(telefoneDTO,token);
     }
+
+    public ViaCepDTOResponse buscaEnderecoPorCEP(String cep) {
+        return client.buscarDadosCep(cep);
+    }
+
 }
