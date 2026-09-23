@@ -66,9 +66,9 @@ public class TarefaController {
     @DeleteMapping
     @Operation(summary = "Deletar Tarefas por Id", description = "Deleta tarefas cadastradas por id")
     @ApiResponse(responseCode = "200", description = "Tarefa deletada com sucesso")
-    @ApiResponse(responseCode = "500", description = "Erro de servidor")
     @ApiResponse(responseCode = "403", description = "Tarefa id não encontrada")
     @ApiResponse(responseCode = "401", description = "Usuário não autorizado")
+    @ApiResponse(responseCode = "500", description = "Erro de servidor")
     public ResponseEntity<Void> deletarTarefaPorId(@RequestParam("id") String id,
                                   @RequestHeader(name = "Authorization", required = false) String token){
         tarefaService.deletaTarefaPorId(id, token);
