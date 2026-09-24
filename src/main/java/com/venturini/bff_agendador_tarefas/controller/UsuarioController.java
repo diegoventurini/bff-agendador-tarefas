@@ -16,11 +16,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.lang.model.util.Elements;
+
 @RestController
 @RequestMapping("/usuario")
 @RequiredArgsConstructor
 // nome da API com descrição
 @Tag(name = "Usuário", description = "Cadastro e login de usuários")
+
+//Usar o CORS em uma controller específica
+// Será usado o COrs so na usuario e não tera o CORS Global
+@CrossOrigin(origins = {"http://localhost:3000"})
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
