@@ -2,6 +2,7 @@ package com.venturini.bff_agendador_tarefas.infrastructure.client.config;
 
 import com.venturini.bff_agendador_tarefas.infrastructure.exceptions.BusinessException;
 import com.venturini.bff_agendador_tarefas.infrastructure.exceptions.ConflictException;
+import com.venturini.bff_agendador_tarefas.infrastructure.exceptions.IllegalArgumentException;
 import com.venturini.bff_agendador_tarefas.infrastructure.exceptions.ResourceNotFoundException;
 import com.venturini.bff_agendador_tarefas.infrastructure.exceptions.UnauthorizedException;
 import feign.Response;
@@ -18,13 +19,13 @@ public class FeignError implements ErrorDecoder {
     // Tratamento de cada response code http
     public Exception decode(String s, Response response) {
 
-        String mensagemErro = mensagemErro(response);
+        String mensagemErro = mensagemError(response);
 
         switch (response.status()) {
             case 409:
                 return new ConflictException("Error: " + mensagemErro);
             case 403:
-                return new ResourceNotFoundException("Erro: " + mensagemErro);
+                return new ResourceNotFoundException("Error: " + mensagemErro);
             case 401:
                 return new UnauthorizedException("Error: " + mensagemErro);
             case 400:
@@ -34,7 +35,7 @@ public class FeignError implements ErrorDecoder {
         }
     }
 
-    private String mensagemErro(Response response) {
+    private String mensagemError(Response response) {
         try {
             if (Objects.isNull(response.body())) {
                 return "";
